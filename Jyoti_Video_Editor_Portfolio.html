@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JYOTI — Video Editor | Creative Portfolio</title>
+<style>
+:root{--bg:#0a0a0a;--card:#121212;--text:#f5f5f5;--muted:#9a9a9a;--line:#252525;--accent:#d7ff3f}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+a{color:inherit;text-decoration:none}
+.container{width:min(1160px,92%);margin:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;background:rgba(10,10,10,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:20px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--accent)}
+.navlinks{display:flex;gap:28px;font-size:13px;color:#bbb}
+.navlinks a:hover{color:var(--accent)}
+.hero{min-height:92vh;display:flex;align-items:center;padding:130px 0 70px}
+.eyebrow{color:var(--accent);font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(58px,10vw,132px);line-height:.86;letter-spacing:-7px;text-transform:uppercase;max-width:950px}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1px #777}
+.hero p{max-width:610px;color:#aaa;font-size:18px;margin:30px 0}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:14px 21px;border:1px solid #444;border-radius:999px;font-weight:800;font-size:13px}
+.btn.primary{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+.btn:hover{transform:translateY(-2px)}
+section{padding:100px 0;border-top:1px solid var(--line)}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px}
+.sectionhead h2{font-size:48px;letter-spacing:-2px}
+.sectionhead p{color:var(--muted);max-width:390px}
+.showreel{background:linear-gradient(135deg,#1d1d1d,#080808);height:500px;border:1px solid #292929;border-radius:18px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.showreel:before{content:"SHOWREEL";position:absolute;font-size:clamp(70px,15vw,180px);font-weight:900;color:#171717;letter-spacing:-8px}
+.play{position:relative;z-index:1;width:92px;height:92px;border-radius:50%;background:var(--accent);color:#000;display:grid;place-items:center;font-size:27px}
+.note{position:absolute;bottom:20px;left:22px;color:#777;font-size:12px;z-index:2}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.project{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.thumb{height:330px;background:#111;display:flex;align-items:end;padding:22px;position:relative;overflow:hidden}.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.72) 100%)}.thumb b{position:relative;z-index:2}.watch{position:absolute;right:18px;top:18px;z-index:3;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.25);padding:8px 12px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.5px}
+.thumb b{font-size:42px;letter-spacing:-2px}
+.project:nth-child(2) .thumb{background:linear-gradient(135deg,#171717,#252525)}
+.project:nth-child(3) .thumb{background:linear-gradient(135deg,#292929,#111)}
+.project:nth-child(4) .thumb{background:linear-gradient(135deg,#111,#2b2b2b)}.newproject{background:linear-gradient(135deg,#202020,#0c0c0c)!important}
+.projectbody{padding:22px}
+.projectbody h3{font-size:22px;margin-bottom:7px}
+.projectbody p{color:#999;font-size:14px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}
+.tag{font-size:11px;border:1px solid #333;border-radius:999px;padding:6px 9px;color:#bbb}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.skill{background:var(--bg);padding:28px 20px;min-height:150px}
+.skill strong{font-size:20px;display:block;margin-bottom:10px}
+.skill span{font-size:13px;color:#888}
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:70px}
+.about h2{font-size:52px;line-height:1;letter-spacing:-3px}
+.about p{color:#aaa;margin-top:20px;max-width:650px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{border:1px solid var(--line);padding:25px;border-radius:14px}
+.stat b{font-size:34px}
+.stat span{display:block;color:#888;font-size:12px;margin-top:5px}
+.contact{background:var(--accent);color:#0a0a0a;border-radius:22px;padding:65px}
+.contact h2{font-size:clamp(45px,8vw,90px);line-height:.9;letter-spacing:-5px;max-width:800px}
+.contact p{margin:22px 0 28px;max-width:560px}
+.contact .btn{border-color:#000}
+footer{padding:30px 0;color:#666;font-size:12px;display:flex;justify-content:space-between}
+@media(max-width:800px){
+.navlinks{display:none}.hero{min-height:auto;padding-top:130px}
+h1{letter-spacing:-4px}.grid,.about{grid-template-columns:1fr}.skills{grid-template-columns:1fr 1fr}
+.showreel{height:360px}.sectionhead{display:block}.sectionhead p{margin-top:12px}.contact{padding:38px 25px}
+}
+@media(max-width:500px){.skills{grid-template-columns:1fr}.thumb{height:220px}.contact h2{letter-spacing:-3px}}
+
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:55px;align-items:center}
+.hero-copy{min-width:0}
+.hero-photo{justify-self:end;width:min(100%,390px);aspect-ratio:4/5;border-radius:22px;overflow:hidden;border:1px solid #292929;background:#111}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block}
+.about-photo{width:100%;max-width:420px;height:520px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#111;grid-column:1}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block}
+.about>div:nth-child(2){grid-column:2;grid-row:1}
+@media(max-width:800px){
+.hero-grid{grid-template-columns:1fr;gap:35px}
+.hero-photo{justify-self:start;width:min(100%,330px)}
+.about-photo{grid-column:auto;grid-row:auto;max-width:none;height:420px}
+.about>div:nth-child(2){grid-column:auto;grid-row:auto}
+}
+
+.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.video-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.video-frame{aspect-ratio:16/9;background:#050505;position:relative}.video-frame iframe{width:100%;height:100%;border:0;display:block;background:#050505}
+.video-frame a{display:block;width:100%;height:100%;position:relative}.video-frame img{width:100%;height:100%;object-fit:cover;display:block}.video-frame .play-overlay{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));transition:.25s}.video-frame .play-icon{width:64px;height:64px;border-radius:50%;border:1px solid rgba(255,255,255,.65);display:grid;place-items:center;background:rgba(0,0,0,.45);font-size:24px;color:#fff;padding-left:3px}.video-frame a:hover .play-overlay{background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.62))}.video-placeholder{width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(circle at 30% 20%,#262626 0,#111 48%,#050505 100%);color:#fff;font-weight:800;letter-spacing:2px;font-size:12px}
+.video-meta{padding:20px 22px 22px}
+.video-meta h3{font-size:22px;margin-bottom:7px}
+.video-meta p{color:#999;font-size:14px}
+.video-link{display:inline-flex;margin-top:14px;padding:9px 13px;border:1px solid #444;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.5px}
+.video-link:hover{border-color:var(--accent);color:var(--accent)}
+.thumb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.thumb-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.thumb-card img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+.thumb-label{padding:16px 18px;color:#bbb;font-size:13px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.thumb-label span{color:#666;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+@media(max-width:800px){.video-grid,.thumb-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="container navin">
+<a class="logo" href="#">JYOTI<span>.</span></a>
+<div class="navlinks"><a href="#videos">Videos</a><a href="#thumbnails">Thumbnails</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+</div></nav>
+<main>
+<section class="hero"><div class="container hero-grid"><div class="hero-copy">
+<div class="eyebrow">Video Editor • Content Creator</div>
+<h1>I EDIT <em>STORIES</em><br/>THAT MOVE.</h1>
+<p>Short-form content, social media videos, cinematic edits and brand content — edited with rhythm, storytelling and a sharp eye for detail.</p>
+<div class="buttons"><a class="btn primary" href="#work">VIEW MY WORK ↓</a><a class="btn" href="#contact">LET'S WORK TOGETHER</a></div>
+</div>
+<div class="hero-photo"><img alt="Jyoti — Video Editor" src="assets/image_1.png"/></div>
+</div></section>
+<section id="videos"><div class="container">
+<div class="sectionhead"><h2>Video Editing Work</h2><p>My video edits are presented separately. Click a thumbnail to play each project directly in the portfolio.</p></div>
+<div class="video-grid">
+<div class="video-card"><div class="video-frame" style="position:relative;overflow:hidden;aspect-ratio:16/9;background:#080808;">
+<iframe allow="autoplay; fullscreen" allowfullscreen="" class="video-player" data-src="https://drive.google.com/file/d/1qPcNIpwQS4_iGq6hNXFxG9OUWDKNuFqj/preview" loading="lazy" src="about:blank" style="width:100%;height:100%;border:0;display:none;background:#080808;" title="Mahabharat"></iframe>
+<div aria-label="Play Mahabharat video" class="video-poster" role="button" style="position:absolute;inset:0;cursor:pointer;" tabindex="0"><img alt="Mahabharat video thumbnail" src="assets/image_2.png" style="width:100%;height:100%;object-fit:cover;display:block;"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.18);"><span style="width:68px;height:68px;border:2px solid rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45);color:#fff;font-size:28px;padding-left:4px;box-sizing:border-box;">▶</span></span></div>
+</div><div class="video-meta"><h3>Mahabharat</h3><p>Cinematic storytelling edit inspired by the Mahabharat.</p></div></div>
+<div class="video-card"><div class="video-frame" style="position:relative;overflow:hidden;aspect-ratio:16/9;background:#080808;">
+<iframe allow="autoplay; fullscreen" allowfullscreen="" class="video-player" data-src="https://drive.google.com/file/d/1pgBQU7lvPUYbax1qWIllX2yLa3fZb1ei/preview" loading="lazy" src="about:blank" style="width:100%;height:100%;border:0;display:none;background:#080808;" title="Product Video"></iframe>
+<div aria-label="Play Product Video" class="video-poster" role="button" style="position:absolute;inset:0;cursor:pointer;" tabindex="0"><img alt="Product video thumbnail" src="assets/image_3.png" style="width:100%;height:100%;object-fit:cover;display:block;"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.12);"><span style="width:68px;height:68px;border:2px solid rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);color:#fff;font-size:28px;padding-left:4px;box-sizing:border-box;">▶</span></span></div>
+</div><div class="video-meta"><h3>Product Video</h3><p>Clean, aesthetic product-focused video edit.</p></div></div>
+<div class="video-card"><div class="video-frame" style="position:relative;overflow:hidden;aspect-ratio:16/9;background:#080808;">
+<iframe allow="autoplay; fullscreen" allowfullscreen="" class="video-player" data-src="https://drive.google.com/file/d/11jgxL92ZASxjZxWKZIupHwxZXjd6dvDK/preview" loading="lazy" src="about:blank" style="width:100%;height:100%;border:0;display:none;background:#080808;" title="Editing Skills Showcase"></iframe>
+<div aria-label="Play Editing Skills Showcase" class="video-poster" role="button" style="position:absolute;inset:0;cursor:pointer;" tabindex="0"><img alt="Editing Skills Showcase thumbnail" src="assets/image_4.png" style="width:100%;height:100%;object-fit:cover;display:block;"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.12);"><span style="width:68px;height:68px;border:2px solid rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);color:#fff;font-size:28px;padding-left:4px;box-sizing:border-box;">▶</span></span></div>
+</div><div class="video-meta"><h3>Editing Skills Showcase</h3><p>Enhancing, masking, clarity, slow motion and more.</p></div></div>
+<div class="video-card"><div class="video-frame" style="position:relative;overflow:hidden;aspect-ratio:16/9;background:#080808;"><iframe allow="autoplay; fullscreen" allowfullscreen="" class="video-player" data-src="https://drive.google.com/file/d/1FRCmcTX-3eL3CSLhppdK4bkOXgVi9rKl/preview" loading="lazy" src="about:blank" style="width:100%;height:100%;border:0;display:none;background:#080808;" title="Video Edit 04"></iframe><div aria-label="Play Video Edit 04" class="video-poster" role="button" style="position:absolute;inset:0;cursor:pointer;" tabindex="0"><img alt="Homemade Pizza video thumbnail" src="assets/image_5.png" style="width:100%;height:100%;object-fit:cover;display:block;"/><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.12);"><span style="width:68px;height:68px;border:2px solid rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);color:#fff;font-size:28px;padding-left:4px;box-sizing:border-box;">▶</span></span></div></div><div class="video-meta"><h3> THE PIZZA VLOG </h3><p>Click the thumbnail to play the edit.</p></div></div>
+<div class="video-card"><div class="video-frame" style="position:relative;overflow:hidden;aspect-ratio:16/9;background:#080808;"><iframe allow="autoplay" allowfullscreen="" class="video-player" data-src="https://drive.google.com/file/d/1BcEdlEv9l5eQ2rgX06KAnPd0uOko_5FG/preview" loading="lazy" src="about:blank" style="width:100%;height:100%;border:0;display:none;background:#080808;" title="Video Edit 05"></iframe><div aria-label="Play Video Edit 5 video" class="video-poster" role="button" style="position:absolute;inset:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);"><img src="assets/beauty thumbnail.png" alt="Beauty salon ad" tabindex="0" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;"><div style="position:relative;z-index:2;text-align:center;color:#fff;font-family:Arial,sans-serif;"><div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 14px;border:1px solid rgba(255,255,255,.35);">▶</div><div style="font-size:18px;font-weight:700;letter-spacing:.08em;"></div><div style="font-size:12px;opacity:.85;margin-top:6px;text-shadow:0 1px 2px rgba(0,0,0,0.8);"></div></div></div></div><div class="video-meta"><h3> THE BEAUTY SALON ACADEMY AD </h3><p></p></div></div>
+<div class="video-card"><div class="video-frame" style="position:relative;overflow:hidden;aspect-ratio:16/9;background:#080808;"><iframe allow="autoplay" allowfullscreen="" class="video-player" data-src="https://drive.google.com/file/d/1Qj278s00KAbe98ckQZBLL1C5c9LRmb_v/preview" loading="lazy" src="about:blank" style="width:100%;height:100%;border:0;display:none;background:#080808;" title="Video Edit 06"></iframe><div aria-label="Play Video Edit 6 video" class="video-poster" role="button" style="position:absolute;inset:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);" tabindex="0"><img src="assets/trendy reel anime.png" alt="Insta anime reel thumbnail" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;"><div style="position:relative;z-index:2;text-align:center;color:#fff;font-family:Arial,sans-serif;"><div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 14px;border:1px solid rgba(255,255,255,.35);">▶</div><div style="font-size:18px;font-weight:700;letter-spacing:.08em;"></div><div style="font-size:12px;opacity:.85;margin-top:6px;text-shadow:0 1px 2px rgba(0,0,0,0.8);"></div></div></div></div><div class="video-meta"><h3>INSTA ANIME REEL</h3><p></p></div></div>
+<div class="video-card"><div class="video-frame" style="position:relative;overflow:hidden;aspect-ratio:16/9;background:#080808;"><iframe allow="autoplay" allowfullscreen="" class="video-player" data-src="https://drive.google.com/file/d/17ElznAWqPJmJyDlUlVInXmX-a0TFOkGG/preview" loading="lazy" src="about:blank" style="width:100%;height:100%;border:0;display:none;background:#080808;" title="Video Edit 07"></iframe><div aria-label="Play Video Edit 7 video" class="video-poster" role="button" style="position:absolute;inset:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);" tabindex="0"><img src="assets/animation.png" alt="Motion graphics" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;"><div style="position:relative;z-index:2;text-align:center;color:#fff;font-family:Arial,sans-serif;"><div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 14px;border:1px solid rgba(255,255,255,.35);">▶</div><div style="font-size:18px;font-weight:700;letter-spacing:.08em;"></div><div style="font-size:12px;opacity:.85;margin-top:6px;text-shadow:0 1px 2px rgba(0,0,0,0.8);"></div></div></div></div><div class="video-meta"><h3>IMAGE ANIMATION / MOTION GRAPHICCS </h3><p></p></div></div>
+</div></div></section>
+<section id="thumbnails"><div class="container">
+<div class="sectionhead"><h2>Edited Images &amp; Thumbnail Design</h2><p>These are standalone image-editing and thumbnail-design projects. They are not connected to the video projects above.</p></div>
+<div class="thumb-grid">
+<div class="thumb-card"><img alt="Homemade Pizza edited thumbnail" src="assets/image_6.png"/><div class="thumb-label"><b>Homemade Pizza</b><span>Edited Image / Thumbnail</span></div></div>
+<div class="thumb-card"><img alt="My First Dahi Handi edited thumbnail" src="assets/image_7.jpg"/><div class="thumb-label"><b>My First Dahi Handi</b><span>Edited Image / Thumbnail</span></div></div>
+<div class="thumb-card"><img alt="Eyebrow Palette Review edited thumbnail" src="assets/image_8.png"/><div class="thumb-label"><b>Eyebrow Palette Review</b><span>Edited Image / Thumbnail</span></div></div>
+<div class="thumb-card"><img alt="Sunita's Chutney edited thumbnail" src="assets/image_9.png"/><div class="thumb-label"><b>Sunita's Chutney</b><span>Edited Image / Thumbnail</span></div></div>
+</div></div></section>
+<section id="skills"><div class="container">
+<div class="sectionhead"><h2>What I Do</h2><p>From raw footage to a finished piece that feels intentional.</p></div>
+<div class="skills">
+<div class="skill"><strong>CapCut</strong><span>Primary editing tool for video projects, reels, shorts and social content.</span></div>
+<div class="skill"><strong>DaVinci Resolve</strong><span>Basic working knowledge for video editing.</span></div>
+<div class="skill"><strong>Adobe Express</strong><span>Creative design and social-content work.</span></div>
+<div class="skill"><strong>Video Editing</strong><span>Cutting raw clips into polished edits with transitions, audio and effects.</span></div>
+<div class="skill"><strong>Instagram Reels</strong><span>Short-form edits built for social media.</span></div>
+<div class="skill"><strong>YouTube Shorts</strong><span>Short-form content and creator-focused editing.</span></div>
+<div class="skill"><strong>Graphic Designing</strong><span>Graphic-design work for social media and content projects.</span></div>
+<div class="skill"><strong>Photo &amp; Video Editing</strong><span>Photo manipulation, cutting and video editing.</span></div>
+</div>
+</div></section>
+<section id="experience"><div class="container">
+<div class="sectionhead"><h2>Experience</h2><p>Professional and independent content work from my CV.</p></div>
+<div class="skills">
+<div class="skill"><strong>Assistant Editor — MANIK PHOTOS</strong><span>Photo manipulation, cutting, video editing and identity-size photos.</span></div>
+<div class="skill"><strong>YouTube &amp; Instagram Creator</strong><span>Independent creator work including vlogs, Shorts and Instagram Reels.</span></div>
+<div class="skill"><strong>Freelancer</strong><span>Instagram Reels and graphic designing; turning raw clips into polished edits with transitions, audio, effects and more.</span></div>
+</div>
+</div></section>
+<section id="about"><div class="container about">
+<div class="about-photo"><img alt="Jyoti — Video Editor" src="assets/image_10.png"/></div>
+<div><div class="eyebrow">About Me</div><h2>RAW FOOTAGE.<br/>GOOD STORY.<br/>GREAT EDIT.</h2>
+<p>I'm Jyoti, a video editor and content creator with experience in social-media content, Instagram Reels, YouTube Shorts, vlogs and graphic designing.</p>
+<p>My experience includes working as an Assistant Editor at MANIK PHOTOS, creating my own YouTube and Instagram content, and freelancing on Instagram Reels and graphic-design projects. I work mainly in CapCut and focus on turning raw clips into polished edits using cuts, transitions, audio and effects.</p></div>
+<div class="stats">
+<div class="stat"><b>01</b><span>HOOK-FIRST THINKING</span></div>
+<div class="stat"><b>02</b><span>STORY-DRIVEN EDITING</span></div>
+<div class="stat"><b>03</b><span>DETAIL-FOCUSED FINISH</span></div>
+<div class="stat"><b>04</b><span>SOCIAL-FIRST FORMATS</span></div>
+</div>
+</div></section>
+<section id="contact"><div class="container"><div class="contact">
+<div class="eyebrow">Have a project?</div>
+<h2>LET'S MAKE PEOPLE WATCH.</h2>
+<p>Send me your footage, idea or brief. Let's turn it into content that feels worth stopping for.</p>
+<div class="buttons"><a class="btn" href="mailto:ghostmindstudio1@gmail.com">EMAIL ME</a><a class="btn" href="tel:+918975487881">CALL / WHATSAPP: 8975487881</a><a class="btn" href="https://www.instagram.com/the_jyo_effect?stkn=MXVteTN0d3JrZHkydg==" target="_blank">INSTAGRAM ↗</a><a class="btn" href="https://www.youtube.com/@TheJYOeffect" target="_blank">YOUTUBE ↗</a></div>
+</div></div></section>
+</main>
+<footer><div class="container" style="display:flex;justify-content:space-between;width:92%"><span>© 2026 JYOTI — VIDEO EDITOR</span><span>EDIT • CREATE • REPEAT</span></div></footer>
+<script>(function(){
+  document.querySelectorAll('.video-card .video-poster').forEach(function(poster){
+    function play(){
+      var iframe=poster.parentElement.querySelector('.video-player');
+      if(!iframe) return;
+      poster.style.display='none'; iframe.style.display='block';
+      if(iframe.src==='about:blank'){
+        var src=iframe.getAttribute('data-src');
+        iframe.src=src+(src.indexOf('?')>=0?'&':'?')+'autoplay=1';
+      }
+    }
+    poster.addEventListener('click',play);
+    poster.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play();}});
+  });
+})();</script></body>
+</html>
